@@ -8,7 +8,16 @@ export class PaymentsService {
   constructor(private prisma: PrismaService) {}
 
   create(createPaymentDto: CreatePaymentDto) {
-    return this.prisma.payment.create({ data: createPaymentDto });
+    try {
+      const payment = this.prisma.payment.create({
+        data: {
+          ...createPaymentDto,
+        },
+      });
+      return payment;
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   findAll() {
