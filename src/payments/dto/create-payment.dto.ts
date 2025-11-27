@@ -67,3 +67,30 @@ export class CreatePaymentDto {
   @IsOptional()
   status: Status;
 }
+
+export class ApprovePaymentDto {
+  @ApiProperty({ description: 'ID del cliente asociado al pago' })
+  @IsString()
+  client_id: string;
+
+  @ApiProperty({ description: 'Monto del pago', example: 199.99 })
+  @IsNumber()
+  amount: number;
+
+  @ApiProperty({
+    description: 'Fecha del pago en formato ISO',
+    example: '2025-01-01T12:00:00Z',
+    required: false,
+  })
+  @IsOptional()
+  @IsDateString()
+  @Transform(({ value }) => (value ? new Date(value) : undefined))
+  payment_date?: Date;
+
+  @ApiProperty({
+    description: 'Código de la transacción',
+    example: 'TRX-988123',
+  })
+  @IsString()
+  transaction_code: string;
+}

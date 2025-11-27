@@ -10,7 +10,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
-import { CreatePaymentDto } from './dto/create-payment.dto';
+import { ApprovePaymentDto, CreatePaymentDto } from './dto/create-payment.dto';
 import { UpdatePaymentDto } from './dto/update-payment.dto';
 
 @Controller('payments')
@@ -23,13 +23,26 @@ export class PaymentsController {
       const payment = this.paymentsService.create(createPaymentDto);
       return payment;
     } catch (err) {
-      throw new HttpException(err, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        err as Record<string, string>,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   @Get()
   findAll() {
     return this.paymentsService.findAll();
+  }
+
+  @Post('/approve')
+  async ApprovePay(@Body() approvePaymentDto: ApprovePaymentDto) {
+    const payment =
+      await this.paymentsService.approveToWispro(approvePaymentDto);
+    if (payment.errors) {
+      throw new HttpException(payment.errors, HttpStatus.BAD_REQUEST);
+    }
+    return payment;
   }
 
   @Get(':id')
