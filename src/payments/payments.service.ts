@@ -21,7 +21,10 @@ export class PaymentsService {
           ...createPaymentDto,
         },
       });
-      return payment;
+      return {
+        payment,
+        success: 'true',
+      };
     } catch (err) {
       console.log(err);
     }

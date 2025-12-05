@@ -11,7 +11,7 @@ datasource db {
 model Payment {
   id               String    @id @default(cuid())
   client_id        String
-  amount           Float
+  amount           String
   payment_date     DateTime? @default(now())
   bank             String
   comment          String?

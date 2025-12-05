@@ -1,12 +1,5 @@
-import {
-  IsString,
-  IsNumber,
-  IsOptional,
-  IsDateString,
-  IsEnum,
-} from 'class-validator';
+import { IsString, IsOptional, IsDateString, IsEnum } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Transform } from 'class-transformer';
 
 export enum Status {
   APROBADO = 'APROBADO',
@@ -23,9 +16,9 @@ export class CreatePaymentDto {
   @IsString()
   name: string;
 
-  @ApiProperty({ description: 'Monto del pago', example: 199.99 })
-  @IsNumber()
-  amount: number;
+  @ApiProperty({ description: 'Monto del pago', example: '199.99' })
+  @IsString()
+  amount: string;
 
   @ApiProperty({
     description: 'Banco desde donde se realizó el pago',
@@ -41,8 +34,7 @@ export class CreatePaymentDto {
   })
   @IsOptional()
   @IsDateString()
-  @Transform(({ value }) => (value ? new Date(value) : undefined))
-  payment_date?: Date;
+  payment_date?: string;
 
   @ApiProperty({
     description: 'Comentario opcional del pago',
@@ -73,19 +65,17 @@ export class ApprovePaymentDto {
   @IsString()
   client_id: string;
 
-  @ApiProperty({ description: 'Monto del pago', example: 199.99 })
-  @IsNumber()
-  amount: number;
+  @ApiProperty({ description: 'Monto del pago', example: '199.99' })
+  @IsString()
+  amount: string;
 
   @ApiProperty({
     description: 'Fecha del pago en formato ISO',
     example: '2025-01-01T12:00:00Z',
     required: false,
   })
-  @IsOptional()
   @IsDateString()
-  @Transform(({ value }) => (value ? new Date(value) : undefined))
-  payment_date?: Date;
+  payment_date?: string;
 
   @ApiProperty({
     description: 'Código de la transacción',

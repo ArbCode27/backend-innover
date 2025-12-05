@@ -20,24 +20,14 @@ export type PaymentModel = runtime.Types.Result.DefaultSelection<Prisma.$Payment
 
 export type AggregatePayment = {
   _count: PaymentCountAggregateOutputType | null
-  _avg: PaymentAvgAggregateOutputType | null
-  _sum: PaymentSumAggregateOutputType | null
   _min: PaymentMinAggregateOutputType | null
   _max: PaymentMaxAggregateOutputType | null
-}
-
-export type PaymentAvgAggregateOutputType = {
-  amount: number | null
-}
-
-export type PaymentSumAggregateOutputType = {
-  amount: number | null
 }
 
 export type PaymentMinAggregateOutputType = {
   id: string | null
   client_id: string | null
-  amount: number | null
+  amount: string | null
   payment_date: Date | null
   bank: string | null
   comment: string | null
@@ -51,7 +41,7 @@ export type PaymentMinAggregateOutputType = {
 export type PaymentMaxAggregateOutputType = {
   id: string | null
   client_id: string | null
-  amount: number | null
+  amount: string | null
   payment_date: Date | null
   bank: string | null
   comment: string | null
@@ -77,14 +67,6 @@ export type PaymentCountAggregateOutputType = {
   _all: number
 }
 
-
-export type PaymentAvgAggregateInputType = {
-  amount?: true
-}
-
-export type PaymentSumAggregateInputType = {
-  amount?: true
-}
 
 export type PaymentMinAggregateInputType = {
   id?: true
@@ -167,18 +149,6 @@ export type PaymentAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: PaymentAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: PaymentSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: PaymentMinAggregateInputType
@@ -209,8 +179,6 @@ export type PaymentGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: PaymentCountAggregateInputType | true
-  _avg?: PaymentAvgAggregateInputType
-  _sum?: PaymentSumAggregateInputType
   _min?: PaymentMinAggregateInputType
   _max?: PaymentMaxAggregateInputType
 }
@@ -218,7 +186,7 @@ export type PaymentGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type PaymentGroupByOutputType = {
   id: string
   client_id: string
-  amount: number
+  amount: string
   payment_date: Date | null
   bank: string
   comment: string | null
@@ -228,8 +196,6 @@ export type PaymentGroupByOutputType = {
   name: string
   status: $Enums.Status
   _count: PaymentCountAggregateOutputType | null
-  _avg: PaymentAvgAggregateOutputType | null
-  _sum: PaymentSumAggregateOutputType | null
   _min: PaymentMinAggregateOutputType | null
   _max: PaymentMaxAggregateOutputType | null
 }
@@ -255,7 +221,7 @@ export type PaymentWhereInput = {
   NOT?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
   id?: Prisma.StringFilter<"Payment"> | string
   client_id?: Prisma.StringFilter<"Payment"> | string
-  amount?: Prisma.FloatFilter<"Payment"> | number
+  amount?: Prisma.StringFilter<"Payment"> | string
   payment_date?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   bank?: Prisma.StringFilter<"Payment"> | string
   comment?: Prisma.StringNullableFilter<"Payment"> | string | null
@@ -286,7 +252,7 @@ export type PaymentWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PaymentWhereInput[]
   NOT?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
   client_id?: Prisma.StringFilter<"Payment"> | string
-  amount?: Prisma.FloatFilter<"Payment"> | number
+  amount?: Prisma.StringFilter<"Payment"> | string
   payment_date?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   bank?: Prisma.StringFilter<"Payment"> | string
   comment?: Prisma.StringNullableFilter<"Payment"> | string | null
@@ -310,10 +276,8 @@ export type PaymentOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   status?: Prisma.SortOrder
   _count?: Prisma.PaymentCountOrderByAggregateInput
-  _avg?: Prisma.PaymentAvgOrderByAggregateInput
   _max?: Prisma.PaymentMaxOrderByAggregateInput
   _min?: Prisma.PaymentMinOrderByAggregateInput
-  _sum?: Prisma.PaymentSumOrderByAggregateInput
 }
 
 export type PaymentScalarWhereWithAggregatesInput = {
@@ -322,7 +286,7 @@ export type PaymentScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PaymentScalarWhereWithAggregatesInput | Prisma.PaymentScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Payment"> | string
   client_id?: Prisma.StringWithAggregatesFilter<"Payment"> | string
-  amount?: Prisma.FloatWithAggregatesFilter<"Payment"> | number
+  amount?: Prisma.StringWithAggregatesFilter<"Payment"> | string
   payment_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
   bank?: Prisma.StringWithAggregatesFilter<"Payment"> | string
   comment?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
@@ -336,7 +300,7 @@ export type PaymentScalarWhereWithAggregatesInput = {
 export type PaymentCreateInput = {
   id?: string
   client_id: string
-  amount: number
+  amount: string
   payment_date?: Date | string | null
   bank: string
   comment?: string | null
@@ -350,7 +314,7 @@ export type PaymentCreateInput = {
 export type PaymentUncheckedCreateInput = {
   id?: string
   client_id: string
-  amount: number
+  amount: string
   payment_date?: Date | string | null
   bank: string
   comment?: string | null
@@ -364,7 +328,7 @@ export type PaymentUncheckedCreateInput = {
 export type PaymentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   client_id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amount?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -378,7 +342,7 @@ export type PaymentUpdateInput = {
 export type PaymentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   client_id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amount?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -392,7 +356,7 @@ export type PaymentUncheckedUpdateInput = {
 export type PaymentCreateManyInput = {
   id?: string
   client_id: string
-  amount: number
+  amount: string
   payment_date?: Date | string | null
   bank: string
   comment?: string | null
@@ -406,7 +370,7 @@ export type PaymentCreateManyInput = {
 export type PaymentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   client_id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amount?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -420,7 +384,7 @@ export type PaymentUpdateManyMutationInput = {
 export type PaymentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   client_id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amount?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -443,10 +407,6 @@ export type PaymentCountOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   name?: Prisma.SortOrder
   status?: Prisma.SortOrder
-}
-
-export type PaymentAvgOrderByAggregateInput = {
-  amount?: Prisma.SortOrder
 }
 
 export type PaymentMaxOrderByAggregateInput = {
@@ -477,20 +437,8 @@ export type PaymentMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
 }
 
-export type PaymentSumOrderByAggregateInput = {
-  amount?: Prisma.SortOrder
-}
-
 export type StringFieldUpdateOperationsInput = {
   set?: string
-}
-
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -575,7 +523,7 @@ export type $PaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     client_id: string
-    amount: number
+    amount: string
     payment_date: Date | null
     bank: string
     comment: string | null
@@ -1009,7 +957,7 @@ export interface Prisma__PaymentClient<T, Null = never, ExtArgs extends runtime.
 export interface PaymentFieldRefs {
   readonly id: Prisma.FieldRef<"Payment", 'String'>
   readonly client_id: Prisma.FieldRef<"Payment", 'String'>
-  readonly amount: Prisma.FieldRef<"Payment", 'Float'>
+  readonly amount: Prisma.FieldRef<"Payment", 'String'>
   readonly payment_date: Prisma.FieldRef<"Payment", 'DateTime'>
   readonly bank: Prisma.FieldRef<"Payment", 'String'>
   readonly comment: Prisma.FieldRef<"Payment", 'String'>
