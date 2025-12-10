@@ -8,10 +8,12 @@ import {
   Delete,
   HttpException,
   HttpStatus,
+  Put,
 } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
 import { ApprovePaymentDto, CreatePaymentDto } from './dto/create-payment.dto';
 import { UpdatePaymentDto } from './dto/update-payment.dto';
+import { UpdateMultiplePaymentsDto } from './dto/update-multiple-payments-dto';
 
 @Controller('payments')
 export class PaymentsController {
@@ -35,13 +37,16 @@ export class PaymentsController {
     return this.paymentsService.findAll();
   }
 
-  @Post('/approve')
-  async ApprovePay(@Body() approvePaymentDto: ApprovePaymentDto) {
-    const payment =
-      await this.paymentsService.approveToWispro(approvePaymentDto);
-    if (payment.errors) {
-      throw new HttpException(payment.errors, HttpStatus.BAD_REQUEST);
-    }
+  @Post('/approve/:id')
+  async ApprovePay(
+    @Body() approvePaymentDto: ApprovePaymentDto,
+    @Param('id') id: string,
+  ) {
+    const payment = await this.paymentsService.approveToWispro(
+      id,
+      approvePaymentDto,
+    );
+
     return payment;
   }
 
@@ -53,6 +58,11 @@ export class PaymentsController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePaymentDto: UpdatePaymentDto) {
     return this.paymentsService.update(id, updatePaymentDto);
+  }
+
+  @Put()
+  updateManyById(@Body() body: UpdateMultiplePaymentsDto) {
+    return this.paymentsService.updateManyByIds(body);
   }
 
   @Delete(':id')
