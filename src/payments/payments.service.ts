@@ -29,7 +29,11 @@ export class PaymentsService {
   }
 
   findAll() {
-    return this.prisma.payment.findMany();
+    return this.prisma.payment.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
   }
 
   async approveToWispro(id: string, body: ApprovePaymentDto) {
