@@ -1,4 +1,10 @@
-import { IsString, IsOptional, IsDateString, IsEnum } from 'class-validator';
+import {
+  IsString,
+  IsOptional,
+  IsDateString,
+  IsEnum,
+  IsBoolean,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export enum Status {
@@ -58,6 +64,9 @@ export class CreatePaymentDto {
   @IsEnum(Status)
   @IsOptional()
   status: Status;
+
+  @IsBoolean()
+  is_promise?: boolean;
 }
 
 export class ApprovePaymentDto {

@@ -19,6 +19,7 @@ model Payment {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
   name             String
+  is_promise       Boolean   @default(false)
   status           Status    @default(EN_PROCESO)
 }
 
