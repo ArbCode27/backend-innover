@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PaymentPromiseService } from './payment_promise.service';
 import { CreatePaymentPromiseDto } from './dto/create-payment_promise.dto';
 import { UpdatePaymentPromiseDto } from './dto/update-payment_promise.dto';
@@ -19,16 +27,19 @@ export class PaymentPromiseController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.paymentPromiseService.findOne(+id);
+    return this.paymentPromiseService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePaymentPromiseDto: UpdatePaymentPromiseDto) {
-    return this.paymentPromiseService.update(+id, updatePaymentPromiseDto);
+  update(
+    @Param('id') id: string,
+    @Body() updatePaymentPromiseDto: UpdatePaymentPromiseDto,
+  ) {
+    return this.paymentPromiseService.update(id, updatePaymentPromiseDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.paymentPromiseService.remove(+id);
+    return this.paymentPromiseService.remove(id);
   }
 }
