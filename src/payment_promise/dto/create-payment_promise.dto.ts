@@ -9,6 +9,10 @@ export class CreatePaymentPromiseDto {
   @IsNotEmpty()
   contract_id: string;
 
+  @ApiProperty({ description: 'Nombre del cliente', example: 'Juan Pérez' })
+  @IsString()
+  name: string;
+
   @IsString()
   @IsNotEmpty()
   amount: string;

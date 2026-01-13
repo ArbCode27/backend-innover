@@ -95,9 +95,12 @@ export const Payment_promiseScalarFieldEnum = {
   contract_id: 'contract_id',
   amount: 'amount',
   bank: 'bank',
+  name: 'name',
   transaction_code: 'transaction_code',
+  payment_date: 'payment_date',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  status: 'status'
 } as const
 
 export type Payment_promiseScalarFieldEnum = (typeof Payment_promiseScalarFieldEnum)[keyof typeof Payment_promiseScalarFieldEnum]

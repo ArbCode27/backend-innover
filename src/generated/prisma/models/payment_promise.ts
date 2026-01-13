@@ -30,9 +30,12 @@ export type Payment_promiseMinAggregateOutputType = {
   contract_id: string | null
   amount: string | null
   bank: string | null
+  name: string | null
   transaction_code: string | null
+  payment_date: Date | null
   created_at: Date | null
   updated_at: Date | null
+  status: $Enums.Status | null
 }
 
 export type Payment_promiseMaxAggregateOutputType = {
@@ -41,9 +44,12 @@ export type Payment_promiseMaxAggregateOutputType = {
   contract_id: string | null
   amount: string | null
   bank: string | null
+  name: string | null
   transaction_code: string | null
+  payment_date: Date | null
   created_at: Date | null
   updated_at: Date | null
+  status: $Enums.Status | null
 }
 
 export type Payment_promiseCountAggregateOutputType = {
@@ -52,9 +58,12 @@ export type Payment_promiseCountAggregateOutputType = {
   contract_id: number
   amount: number
   bank: number
+  name: number
   transaction_code: number
+  payment_date: number
   created_at: number
   updated_at: number
+  status: number
   _all: number
 }
 
@@ -65,9 +74,12 @@ export type Payment_promiseMinAggregateInputType = {
   contract_id?: true
   amount?: true
   bank?: true
+  name?: true
   transaction_code?: true
+  payment_date?: true
   created_at?: true
   updated_at?: true
+  status?: true
 }
 
 export type Payment_promiseMaxAggregateInputType = {
@@ -76,9 +88,12 @@ export type Payment_promiseMaxAggregateInputType = {
   contract_id?: true
   amount?: true
   bank?: true
+  name?: true
   transaction_code?: true
+  payment_date?: true
   created_at?: true
   updated_at?: true
+  status?: true
 }
 
 export type Payment_promiseCountAggregateInputType = {
@@ -87,9 +102,12 @@ export type Payment_promiseCountAggregateInputType = {
   contract_id?: true
   amount?: true
   bank?: true
+  name?: true
   transaction_code?: true
+  payment_date?: true
   created_at?: true
   updated_at?: true
+  status?: true
   _all?: true
 }
 
@@ -171,9 +189,12 @@ export type Payment_promiseGroupByOutputType = {
   contract_id: string
   amount: string
   bank: string
+  name: string
   transaction_code: string
+  payment_date: Date | null
   created_at: Date
   updated_at: Date
+  status: $Enums.Status
   _count: Payment_promiseCountAggregateOutputType | null
   _min: Payment_promiseMinAggregateOutputType | null
   _max: Payment_promiseMaxAggregateOutputType | null
@@ -203,9 +224,12 @@ export type payment_promiseWhereInput = {
   contract_id?: Prisma.StringFilter<"payment_promise"> | string
   amount?: Prisma.StringFilter<"payment_promise"> | string
   bank?: Prisma.StringFilter<"payment_promise"> | string
+  name?: Prisma.StringFilter<"payment_promise"> | string
   transaction_code?: Prisma.StringFilter<"payment_promise"> | string
+  payment_date?: Prisma.DateTimeNullableFilter<"payment_promise"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"payment_promise"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"payment_promise"> | Date | string
+  status?: Prisma.EnumStatusFilter<"payment_promise"> | $Enums.Status
 }
 
 export type payment_promiseOrderByWithRelationInput = {
@@ -214,9 +238,12 @@ export type payment_promiseOrderByWithRelationInput = {
   contract_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
+  payment_date?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type payment_promiseWhereUniqueInput = Prisma.AtLeast<{
@@ -228,9 +255,12 @@ export type payment_promiseWhereUniqueInput = Prisma.AtLeast<{
   contract_id?: Prisma.StringFilter<"payment_promise"> | string
   amount?: Prisma.StringFilter<"payment_promise"> | string
   bank?: Prisma.StringFilter<"payment_promise"> | string
+  name?: Prisma.StringFilter<"payment_promise"> | string
   transaction_code?: Prisma.StringFilter<"payment_promise"> | string
+  payment_date?: Prisma.DateTimeNullableFilter<"payment_promise"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"payment_promise"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"payment_promise"> | Date | string
+  status?: Prisma.EnumStatusFilter<"payment_promise"> | $Enums.Status
 }, "id">
 
 export type payment_promiseOrderByWithAggregationInput = {
@@ -239,9 +269,12 @@ export type payment_promiseOrderByWithAggregationInput = {
   contract_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
+  payment_date?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   _count?: Prisma.payment_promiseCountOrderByAggregateInput
   _max?: Prisma.payment_promiseMaxOrderByAggregateInput
   _min?: Prisma.payment_promiseMinOrderByAggregateInput
@@ -256,9 +289,12 @@ export type payment_promiseScalarWhereWithAggregatesInput = {
   contract_id?: Prisma.StringWithAggregatesFilter<"payment_promise"> | string
   amount?: Prisma.StringWithAggregatesFilter<"payment_promise"> | string
   bank?: Prisma.StringWithAggregatesFilter<"payment_promise"> | string
+  name?: Prisma.StringWithAggregatesFilter<"payment_promise"> | string
   transaction_code?: Prisma.StringWithAggregatesFilter<"payment_promise"> | string
+  payment_date?: Prisma.DateTimeNullableWithAggregatesFilter<"payment_promise"> | Date | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"payment_promise"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"payment_promise"> | Date | string
+  status?: Prisma.EnumStatusWithAggregatesFilter<"payment_promise"> | $Enums.Status
 }
 
 export type payment_promiseCreateInput = {
@@ -267,9 +303,12 @@ export type payment_promiseCreateInput = {
   contract_id: string
   amount: string
   bank: string
+  name: string
   transaction_code: string
+  payment_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
+  status?: $Enums.Status
 }
 
 export type payment_promiseUncheckedCreateInput = {
@@ -278,9 +317,12 @@ export type payment_promiseUncheckedCreateInput = {
   contract_id: string
   amount: string
   bank: string
+  name: string
   transaction_code: string
+  payment_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
+  status?: $Enums.Status
 }
 
 export type payment_promiseUpdateInput = {
@@ -289,9 +331,12 @@ export type payment_promiseUpdateInput = {
   contract_id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
+  payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
 }
 
 export type payment_promiseUncheckedUpdateInput = {
@@ -300,9 +345,12 @@ export type payment_promiseUncheckedUpdateInput = {
   contract_id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
+  payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
 }
 
 export type payment_promiseCreateManyInput = {
@@ -311,9 +359,12 @@ export type payment_promiseCreateManyInput = {
   contract_id: string
   amount: string
   bank: string
+  name: string
   transaction_code: string
+  payment_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
+  status?: $Enums.Status
 }
 
 export type payment_promiseUpdateManyMutationInput = {
@@ -322,9 +373,12 @@ export type payment_promiseUpdateManyMutationInput = {
   contract_id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
+  payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
 }
 
 export type payment_promiseUncheckedUpdateManyInput = {
@@ -333,9 +387,12 @@ export type payment_promiseUncheckedUpdateManyInput = {
   contract_id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
+  payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
 }
 
 export type payment_promiseCountOrderByAggregateInput = {
@@ -344,9 +401,12 @@ export type payment_promiseCountOrderByAggregateInput = {
   contract_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
+  payment_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type payment_promiseMaxOrderByAggregateInput = {
@@ -355,9 +415,12 @@ export type payment_promiseMaxOrderByAggregateInput = {
   contract_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
+  payment_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type payment_promiseMinOrderByAggregateInput = {
@@ -366,9 +429,12 @@ export type payment_promiseMinOrderByAggregateInput = {
   contract_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
+  payment_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 
@@ -379,9 +445,12 @@ export type payment_promiseSelect<ExtArgs extends runtime.Types.Extensions.Inter
   contract_id?: boolean
   amount?: boolean
   bank?: boolean
+  name?: boolean
   transaction_code?: boolean
+  payment_date?: boolean
   created_at?: boolean
   updated_at?: boolean
+  status?: boolean
 }, ExtArgs["result"]["payment_promise"]>
 
 export type payment_promiseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -390,9 +459,12 @@ export type payment_promiseSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   contract_id?: boolean
   amount?: boolean
   bank?: boolean
+  name?: boolean
   transaction_code?: boolean
+  payment_date?: boolean
   created_at?: boolean
   updated_at?: boolean
+  status?: boolean
 }, ExtArgs["result"]["payment_promise"]>
 
 export type payment_promiseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -401,9 +473,12 @@ export type payment_promiseSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   contract_id?: boolean
   amount?: boolean
   bank?: boolean
+  name?: boolean
   transaction_code?: boolean
+  payment_date?: boolean
   created_at?: boolean
   updated_at?: boolean
+  status?: boolean
 }, ExtArgs["result"]["payment_promise"]>
 
 export type payment_promiseSelectScalar = {
@@ -412,12 +487,15 @@ export type payment_promiseSelectScalar = {
   contract_id?: boolean
   amount?: boolean
   bank?: boolean
+  name?: boolean
   transaction_code?: boolean
+  payment_date?: boolean
   created_at?: boolean
   updated_at?: boolean
+  status?: boolean
 }
 
-export type payment_promiseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "valid_until" | "contract_id" | "amount" | "bank" | "transaction_code" | "created_at" | "updated_at", ExtArgs["result"]["payment_promise"]>
+export type payment_promiseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "valid_until" | "contract_id" | "amount" | "bank" | "name" | "transaction_code" | "payment_date" | "created_at" | "updated_at" | "status", ExtArgs["result"]["payment_promise"]>
 
 export type $payment_promisePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "payment_promise"
@@ -428,9 +506,12 @@ export type $payment_promisePayload<ExtArgs extends runtime.Types.Extensions.Int
     contract_id: string
     amount: string
     bank: string
+    name: string
     transaction_code: string
+    payment_date: Date | null
     created_at: Date
     updated_at: Date
+    status: $Enums.Status
   }, ExtArgs["result"]["payment_promise"]>
   composites: {}
 }
@@ -859,9 +940,12 @@ export interface payment_promiseFieldRefs {
   readonly contract_id: Prisma.FieldRef<"payment_promise", 'String'>
   readonly amount: Prisma.FieldRef<"payment_promise", 'String'>
   readonly bank: Prisma.FieldRef<"payment_promise", 'String'>
+  readonly name: Prisma.FieldRef<"payment_promise", 'String'>
   readonly transaction_code: Prisma.FieldRef<"payment_promise", 'String'>
+  readonly payment_date: Prisma.FieldRef<"payment_promise", 'DateTime'>
   readonly created_at: Prisma.FieldRef<"payment_promise", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"payment_promise", 'DateTime'>
+  readonly status: Prisma.FieldRef<"payment_promise", 'Status'>
 }
     
 
