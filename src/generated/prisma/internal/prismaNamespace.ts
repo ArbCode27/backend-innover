@@ -385,6 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Payment: 'Payment',
+  payment_promise: 'payment_promise',
   User: 'User'
 } as const
 
@@ -401,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "payment" | "user"
+    modelProps: "payment" | "payment_promise" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -476,6 +477,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.PaymentCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.PaymentCountAggregateOutputType> | number
+        }
+      }
+    }
+    payment_promise: {
+      payload: Prisma.$payment_promisePayload<ExtArgs>
+      fields: Prisma.payment_promiseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.payment_promiseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.payment_promiseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+        }
+        findFirst: {
+          args: Prisma.payment_promiseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.payment_promiseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+        }
+        findMany: {
+          args: Prisma.payment_promiseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>[]
+        }
+        create: {
+          args: Prisma.payment_promiseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+        }
+        createMany: {
+          args: Prisma.payment_promiseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.payment_promiseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>[]
+        }
+        delete: {
+          args: Prisma.payment_promiseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+        }
+        update: {
+          args: Prisma.payment_promiseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+        }
+        deleteMany: {
+          args: Prisma.payment_promiseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.payment_promiseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.payment_promiseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>[]
+        }
+        upsert: {
+          args: Prisma.payment_promiseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+        }
+        aggregate: {
+          args: Prisma.Payment_promiseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePayment_promise>
+        }
+        groupBy: {
+          args: Prisma.payment_promiseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Payment_promiseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.payment_promiseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Payment_promiseCountAggregateOutputType> | number
         }
       }
     }
@@ -607,6 +682,20 @@ export const PaymentScalarFieldEnum = {
 } as const
 
 export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+export const Payment_promiseScalarFieldEnum = {
+  id: 'id',
+  valid_until: 'valid_until',
+  contract_id: 'contract_id',
+  amount: 'amount',
+  bank: 'bank',
+  transaction_code: 'transaction_code',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Payment_promiseScalarFieldEnum = (typeof Payment_promiseScalarFieldEnum)[keyof typeof Payment_promiseScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -803,6 +892,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   payment?: Prisma.PaymentOmit
+  payment_promise?: Prisma.payment_promiseOmit
   user?: Prisma.UserOmit
 }
 

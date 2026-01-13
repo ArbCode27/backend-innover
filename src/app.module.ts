@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { PaymentsModule } from './payments/payments.module';
 import { CustomerModule } from './customer/customer.module';
+import { PaymentPromiseModule } from './payment_promise/payment_promise.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CustomerModule } from './customer/customer.module';
     AuthModule,
     PaymentsModule,
     CustomerModule,
+    PaymentPromiseModule,
   ],
   controllers: [],
   providers: [],

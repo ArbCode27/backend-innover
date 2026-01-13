@@ -30,6 +30,7 @@ export class PaymentsService {
 
   findAll() {
     return this.prisma.payment.findMany({
+      take: 20,
       orderBy: {
         createdAt: 'desc',
       },

@@ -19,7 +19,20 @@ model Payment {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
   name             String
-  is_promise       Boolean   @default(false)
+  status           Status    @default(EN_PROCESO)
+}
+
+model payment_promise {
+  id               String    @id @default(cuid())
+  valid_until      DateTime
+  contract_id      String
+  amount           String
+  bank             String
+  name             String
+  transaction_code String
+  payment_date     DateTime? @default(now())
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
   status           Status    @default(EN_PROCESO)
 }
 
