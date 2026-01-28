@@ -9,9 +9,13 @@ export class PaymentPromiseService {
 
   create(createPaymentPromiseDto: CreatePaymentPromiseDto) {
     try {
-      const payment = this.prisma.payment_promise.create({
+      const valid = this.addCalendarDays(
+        Number(createPaymentPromiseDto.valid_until),
+      );
+      const payment = this.prisma.paymentPromise.create({
         data: {
           ...createPaymentPromiseDto,
+          valid_until: valid.toISOString(),
         },
       });
       return payment;
@@ -21,11 +25,11 @@ export class PaymentPromiseService {
   }
 
   findAll() {
-    return this.prisma.payment_promise.findMany();
+    return this.prisma.paymentPromise.findMany();
   }
 
   findOne(id: string) {
-    return this.prisma.payment_promise.findUnique({
+    return this.prisma.paymentPromise.findUnique({
       where: {
         id: id,
       },
@@ -33,7 +37,7 @@ export class PaymentPromiseService {
   }
 
   update(id: string, updatePaymentPromiseDto: UpdatePaymentPromiseDto) {
-    return this.prisma.payment_promise.update({
+    return this.prisma.paymentPromise.update({
       where: {
         id: id,
       },
@@ -44,10 +48,16 @@ export class PaymentPromiseService {
   }
 
   remove(id: string) {
-    return this.prisma.payment_promise.delete({
+    return this.prisma.paymentPromise.delete({
       where: {
         id: id,
       },
     });
+  }
+
+  addCalendarDays(days: number): Date {
+    const result = new Date();
+    result.setDate(result.getDate() + days);
+    return result;
   }
 }

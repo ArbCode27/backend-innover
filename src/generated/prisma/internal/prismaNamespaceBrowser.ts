@@ -52,7 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Payment: 'Payment',
-  payment_promise: 'payment_promise',
+  PaymentPromise: 'PaymentPromise',
   User: 'User'
 } as const
 
@@ -89,7 +89,7 @@ export const PaymentScalarFieldEnum = {
 export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
 
 
-export const Payment_promiseScalarFieldEnum = {
+export const PaymentPromiseScalarFieldEnum = {
   id: 'id',
   valid_until: 'valid_until',
   contract_id: 'contract_id',
@@ -103,7 +103,7 @@ export const Payment_promiseScalarFieldEnum = {
   status: 'status'
 } as const
 
-export type Payment_promiseScalarFieldEnum = (typeof Payment_promiseScalarFieldEnum)[keyof typeof Payment_promiseScalarFieldEnum]
+export type PaymentPromiseScalarFieldEnum = (typeof PaymentPromiseScalarFieldEnum)[keyof typeof PaymentPromiseScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {

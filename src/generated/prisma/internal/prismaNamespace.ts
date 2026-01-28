@@ -385,7 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Payment: 'Payment',
-  payment_promise: 'payment_promise',
+  PaymentPromise: 'PaymentPromise',
   User: 'User'
 } as const
 
@@ -402,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "payment" | "payment_promise" | "user"
+    modelProps: "payment" | "paymentPromise" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -480,77 +480,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    payment_promise: {
-      payload: Prisma.$payment_promisePayload<ExtArgs>
-      fields: Prisma.payment_promiseFieldRefs
+    PaymentPromise: {
+      payload: Prisma.$PaymentPromisePayload<ExtArgs>
+      fields: Prisma.PaymentPromiseFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.payment_promiseFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload> | null
+          args: Prisma.PaymentPromiseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.payment_promiseFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+          args: Prisma.PaymentPromiseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>
         }
         findFirst: {
-          args: Prisma.payment_promiseFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload> | null
+          args: Prisma.PaymentPromiseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.payment_promiseFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+          args: Prisma.PaymentPromiseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>
         }
         findMany: {
-          args: Prisma.payment_promiseFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>[]
+          args: Prisma.PaymentPromiseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>[]
         }
         create: {
-          args: Prisma.payment_promiseCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+          args: Prisma.PaymentPromiseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>
         }
         createMany: {
-          args: Prisma.payment_promiseCreateManyArgs<ExtArgs>
+          args: Prisma.PaymentPromiseCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.payment_promiseCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>[]
+          args: Prisma.PaymentPromiseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>[]
         }
         delete: {
-          args: Prisma.payment_promiseDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+          args: Prisma.PaymentPromiseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>
         }
         update: {
-          args: Prisma.payment_promiseUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+          args: Prisma.PaymentPromiseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>
         }
         deleteMany: {
-          args: Prisma.payment_promiseDeleteManyArgs<ExtArgs>
+          args: Prisma.PaymentPromiseDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.payment_promiseUpdateManyArgs<ExtArgs>
+          args: Prisma.PaymentPromiseUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.payment_promiseUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>[]
+          args: Prisma.PaymentPromiseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>[]
         }
         upsert: {
-          args: Prisma.payment_promiseUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$payment_promisePayload>
+          args: Prisma.PaymentPromiseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPromisePayload>
         }
         aggregate: {
-          args: Prisma.Payment_promiseAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePayment_promise>
+          args: Prisma.PaymentPromiseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePaymentPromise>
         }
         groupBy: {
-          args: Prisma.payment_promiseGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Payment_promiseGroupByOutputType>[]
+          args: Prisma.PaymentPromiseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaymentPromiseGroupByOutputType>[]
         }
         count: {
-          args: Prisma.payment_promiseCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Payment_promiseCountAggregateOutputType> | number
+          args: Prisma.PaymentPromiseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaymentPromiseCountAggregateOutputType> | number
         }
       }
     }
@@ -684,7 +684,7 @@ export const PaymentScalarFieldEnum = {
 export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
 
 
-export const Payment_promiseScalarFieldEnum = {
+export const PaymentPromiseScalarFieldEnum = {
   id: 'id',
   valid_until: 'valid_until',
   contract_id: 'contract_id',
@@ -698,7 +698,7 @@ export const Payment_promiseScalarFieldEnum = {
   status: 'status'
 } as const
 
-export type Payment_promiseScalarFieldEnum = (typeof Payment_promiseScalarFieldEnum)[keyof typeof Payment_promiseScalarFieldEnum]
+export type PaymentPromiseScalarFieldEnum = (typeof PaymentPromiseScalarFieldEnum)[keyof typeof PaymentPromiseScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -895,7 +895,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   payment?: Prisma.PaymentOmit
-  payment_promise?: Prisma.payment_promiseOmit
+  paymentPromise?: Prisma.PaymentPromiseOmit
   user?: Prisma.UserOmit
 }
 

@@ -43,10 +43,10 @@ export { Prisma }
  */
 export type Payment = Prisma.PaymentModel
 /**
- * Model payment_promise
+ * Model PaymentPromise
  * 
  */
-export type payment_promise = Prisma.payment_promiseModel
+export type PaymentPromise = Prisma.PaymentPromiseModel
 /**
  * Model User
  * 

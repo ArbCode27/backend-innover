@@ -22,7 +22,7 @@ model Payment {
   status           Status    @default(EN_PROCESO)
 }
 
-model payment_promise {
+model PaymentPromise {
   id               String    @id @default(cuid())
   valid_until      DateTime
   contract_id      String
@@ -34,6 +34,8 @@ model payment_promise {
   created_at       DateTime  @default(now())
   updated_at       DateTime  @updatedAt
   status           Status    @default(EN_PROCESO)
+
+  @@map("payment_promise")
 }
 
 model User {

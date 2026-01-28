@@ -9,6 +9,6 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Payment.js'
-export type * from './models/payment_promise.js'
+export type * from './models/PaymentPromise.js'
 export type * from './models/User.js'
 export type * from './commonInputTypes.js'
