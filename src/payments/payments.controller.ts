@@ -9,6 +9,8 @@ import {
   HttpException,
   HttpStatus,
   Put,
+  Query,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
 import { ApprovePaymentDto, CreatePaymentDto } from './dto/create-payment.dto';
@@ -33,8 +35,16 @@ export class PaymentsController {
   }
 
   @Get()
-  findAll() {
-    return this.paymentsService.findAll();
+  findAll(
+    @Query('limit', ParseIntPipe) limit: number,
+    @Query('page', ParseIntPipe) page: number,
+  ) {
+    return this.paymentsService.findAll(limit, page);
+  }
+
+  @Get(':bank')
+  findByBank(@Param('bank') bank: string) {
+    return this.paymentsService.findPaymentsByBank(bank);
   }
 
   @Post('/approve/:id')

@@ -24,8 +24,19 @@ export class PaymentPromiseService {
     }
   }
 
-  findAll() {
-    return this.prisma.paymentPromise.findMany();
+  findAll({ limit, page }: { limit: number; page: number }) {
+    return this.prisma.paymentPromise.findMany({
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+  }
+
+  findPaymentsByBank(bank: string) {
+    return this.prisma.paymentPromise.findMany({
+      where: {
+        bank: bank,
+      },
+    });
   }
 
   findOne(id: string) {

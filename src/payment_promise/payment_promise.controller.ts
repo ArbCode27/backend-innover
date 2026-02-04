@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { PaymentPromiseService } from './payment_promise.service';
 import { CreatePaymentPromiseDto } from './dto/create-payment_promise.dto';
@@ -21,8 +23,16 @@ export class PaymentPromiseController {
   }
 
   @Get()
-  findAll() {
-    return this.paymentPromiseService.findAll();
+  findAll(
+    @Query('limit', ParseIntPipe) limit: number,
+    @Query('page', ParseIntPipe) page: number,
+  ) {
+    return this.paymentPromiseService.findAll({ limit, page });
+  }
+
+  @Get(':bank')
+  findByBank(@Param('bank') bank: string) {
+    return this.paymentPromiseService.findPaymentsByBank(bank);
   }
 
   @Get(':id')
