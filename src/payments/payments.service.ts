@@ -28,10 +28,10 @@ export class PaymentsService {
     }
   }
 
-  findAll(limit: number, page: number) {
-    const skip = (page - 1) * limit;
+  findAll(page: number) {
+    const skip = (page - 1) * 20;
     return this.prisma.payment.findMany({
-      take: limit,
+      take: 20,
       skip: skip,
       orderBy: {
         createdAt: 'desc',
@@ -40,7 +40,7 @@ export class PaymentsService {
   }
 
   findPaymentsByBank(bank: string) {
-    return this.prisma.payment.findMany({
+    return this.prisma.payment.findFirst({
       where: {
         bank: bank,
         status: 'EN_PROCESO',

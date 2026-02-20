@@ -35,11 +35,8 @@ export class PaymentsController {
   }
 
   @Get()
-  findAll(
-    @Query('limit', ParseIntPipe) limit: number,
-    @Query('page', ParseIntPipe) page: number,
-  ) {
-    return this.paymentsService.findAll(limit, page);
+  findAll(@Query('page', ParseIntPipe) page: number) {
+    return this.paymentsService.findAll(page);
   }
 
   @Get(':bank')
