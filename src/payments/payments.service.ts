@@ -40,7 +40,7 @@ export class PaymentsService {
   }
 
   findPaymentsByBank(bank: string) {
-    return this.prisma.payment.findFirst({
+    return this.prisma.payment.findMany({
       where: {
         bank: bank,
         status: 'EN_PROCESO',
