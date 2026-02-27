@@ -39,6 +39,11 @@ export class PaymentsController {
     return this.paymentsService.findAll(page);
   }
 
+  @Get('/bcv')
+  getBcvRate() {
+    return this.paymentsService.getBcvRate();
+  }
+
   @Get(':bank')
   findByBank(@Param('bank') bank: string) {
     return this.paymentsService.findPaymentsByBank(bank);

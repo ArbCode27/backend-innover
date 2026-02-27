@@ -5,6 +5,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ConfigService } from '@nestjs/config';
 import { InvoicingPaymentResponse } from './types';
 import { UpdateMultiplePaymentsDto } from './dto/update-multiple-payments-dto';
+import { HttpService } from '@nestjs/axios';
 
 const url = 'https://www.cloud.wispro.co/api/v1/invoicing/payments/';
 
@@ -13,6 +14,7 @@ export class PaymentsService {
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
+    private readonly httpService: HttpService,
   ) {}
 
   create(createPaymentDto: CreatePaymentDto) {
@@ -48,46 +50,92 @@ export class PaymentsService {
     });
   }
 
-  async approveToWispro(id: string, body: ApprovePaymentDto) {
-    const searchPayment = await this.prisma.payment.findUnique({
-      where: {
-        id,
-      },
-    });
-
-    const normalized = body.amount.trim().replace(',', '.');
-
-    const parsed = parseFloat(normalized);
-
-    const boddyParsed = {
-      ...body,
-      amount: parsed,
-    };
-
-    if (searchPayment) {
-      const res = await fetch(url, {
-        method: 'POST',
+  async getBcvRate(): Promise<number> {
+    const req = await fetch(
+      'https://api.dolarvzla.com/public/bcv/exchange-rate',
+      {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: this.configService.get<string>('WISPRO_KEY')!,
+          'x-dolarvzla-key':
+            '15c41eb41e70c1ebe27808902872e8ac17a83a4f819bb7b4160a63521609768b',
         },
-        body: JSON.stringify(boddyParsed),
-      });
-      const payment = (await res.json()) as InvoicingPaymentResponse;
+      },
+    );
 
-      if (payment.errors) {
-        throw new HttpException(payment.errors, HttpStatus.BAD_REQUEST);
-      }
-
-      await this.prisma.payment.update({
-        where: { id },
-        data: { status: 'APROBADO' },
-      });
-
-      return payment;
+    if (!req.ok) {
+      throw new HttpException(
+        'Error fetching BCV rate',
+        HttpStatus.BAD_GATEWAY,
+      );
     }
 
-    throw new HttpException('El ID del pago no existe', HttpStatus.NOT_FOUND);
+    const raw: unknown = await req.json();
+
+    if (typeof raw !== 'object' || raw === null) {
+      throw new HttpException('Invalid BCV response', HttpStatus.BAD_REQUEST);
+    }
+
+    const data = raw as Record<string, unknown>;
+    const current = data.current as Record<string, unknown>;
+
+    if (!current || typeof current.usd !== 'number') {
+      throw new HttpException('Invalid BCV structure', HttpStatus.BAD_REQUEST);
+    }
+
+    return current.usd;
+  }
+
+  async approveToWispro(id: string, body: ApprovePaymentDto) {
+    const searchPayment = await this.prisma.payment.findUnique({
+      where: { id },
+    });
+
+    if (!searchPayment) {
+      throw new HttpException('El ID del pago no existe', HttpStatus.NOT_FOUND);
+    }
+
+    const normalized = body.amount.trim().replace(',', '.');
+    const parsed = parseFloat(normalized);
+
+    if (isNaN(parsed)) {
+      throw new HttpException('Monto inválido', HttpStatus.BAD_REQUEST);
+    }
+
+    // 🚀 SIN "as"
+    //
+    const bcvRate = await this.getBcvRate();
+
+    if (!bcvRate) {
+      throw new HttpException('Monto inválido', HttpStatus.BAD_REQUEST);
+    }
+
+    const ammountCalculate = parsed / bcvRate;
+
+    const bodyParsed = {
+      ...body,
+      amount: ammountCalculate,
+    };
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: this.configService.get<string>('WISPRO_KEY')!,
+      },
+      body: JSON.stringify(bodyParsed),
+    });
+
+    const payment = (await res.json()) as InvoicingPaymentResponse;
+
+    if (payment.errors) {
+      throw new HttpException(payment.errors, HttpStatus.BAD_REQUEST);
+    }
+
+    await this.prisma.payment.update({
+      where: { id },
+      data: { status: 'APROBADO' },
+    });
+
+    return payment;
   }
 
   findOne(id: string) {
