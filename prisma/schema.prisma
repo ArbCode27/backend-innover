@@ -19,6 +19,7 @@ model Payment {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
   name             String
+  cedula           String    @default("SIN_CEDULA") @db.VarChar(255)
   status           Status    @default(EN_PROCESO)
 }
 
@@ -29,6 +30,7 @@ model PaymentPromise {
   amount           String
   bank             String
   name             String
+  cedula           String    @default("SIN_CEDULA") @db.VarChar(255)
   transaction_code String
   payment_date     DateTime? @default(now())
   created_at       DateTime  @default(now())

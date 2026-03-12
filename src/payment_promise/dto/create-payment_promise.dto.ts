@@ -19,6 +19,10 @@ export class CreatePaymentPromiseDto {
   @IsString()
   name: string;
 
+  @ApiProperty({ description: 'Cédula del cliente', example: '1234567890' })
+  @IsString()
+  cedula: string;
+
   @ApiProperty({ description: 'monto pagado', example: '200.00' })
   @IsString()
   @IsNotEmpty()
