@@ -2,14 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsUUID, IsNotEmpty } from 'class-validator';
 
 export class CreatePaymentPromiseDto {
-  @ApiProperty({
-    description: 'dias que desea pagar el cliente',
-    example: '20',
-  })
-  @IsString()
-  @IsNotEmpty()
-  valid_until: string;
-
   @ApiProperty({ description: 'id del contrato', example: '13123-d1212-dsfs1' })
   @IsUUID()
   @IsNotEmpty()
