@@ -9,9 +9,7 @@ export class PaymentPromiseService {
 
   create(createPaymentPromiseDto: CreatePaymentPromiseDto) {
     try {
-      const valid = this.addCalendarDays(
-        Number(createPaymentPromiseDto.valid_until),
-      );
+      const valid = this.addCalendarDays(2);
       const payment = this.prisma.paymentPromise.create({
         data: {
           ...createPaymentPromiseDto,
