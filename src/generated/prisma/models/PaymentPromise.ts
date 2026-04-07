@@ -31,6 +31,7 @@ export type PaymentPromiseMinAggregateOutputType = {
   amount: string | null
   bank: string | null
   name: string | null
+  cedula: string | null
   transaction_code: string | null
   payment_date: Date | null
   created_at: Date | null
@@ -45,6 +46,7 @@ export type PaymentPromiseMaxAggregateOutputType = {
   amount: string | null
   bank: string | null
   name: string | null
+  cedula: string | null
   transaction_code: string | null
   payment_date: Date | null
   created_at: Date | null
@@ -59,6 +61,7 @@ export type PaymentPromiseCountAggregateOutputType = {
   amount: number
   bank: number
   name: number
+  cedula: number
   transaction_code: number
   payment_date: number
   created_at: number
@@ -75,6 +78,7 @@ export type PaymentPromiseMinAggregateInputType = {
   amount?: true
   bank?: true
   name?: true
+  cedula?: true
   transaction_code?: true
   payment_date?: true
   created_at?: true
@@ -89,6 +93,7 @@ export type PaymentPromiseMaxAggregateInputType = {
   amount?: true
   bank?: true
   name?: true
+  cedula?: true
   transaction_code?: true
   payment_date?: true
   created_at?: true
@@ -103,6 +108,7 @@ export type PaymentPromiseCountAggregateInputType = {
   amount?: true
   bank?: true
   name?: true
+  cedula?: true
   transaction_code?: true
   payment_date?: true
   created_at?: true
@@ -190,6 +196,7 @@ export type PaymentPromiseGroupByOutputType = {
   amount: string
   bank: string
   name: string
+  cedula: string
   transaction_code: string
   payment_date: Date | null
   created_at: Date
@@ -200,7 +207,7 @@ export type PaymentPromiseGroupByOutputType = {
   _max: PaymentPromiseMaxAggregateOutputType | null
 }
 
-type GetPaymentPromiseGroupByPayload<T extends PaymentPromiseGroupByArgs> = Prisma.PrismaPromise<
+export type GetPaymentPromiseGroupByPayload<T extends PaymentPromiseGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<PaymentPromiseGroupByOutputType, T['by']> &
       {
@@ -225,6 +232,7 @@ export type PaymentPromiseWhereInput = {
   amount?: Prisma.StringFilter<"PaymentPromise"> | string
   bank?: Prisma.StringFilter<"PaymentPromise"> | string
   name?: Prisma.StringFilter<"PaymentPromise"> | string
+  cedula?: Prisma.StringFilter<"PaymentPromise"> | string
   transaction_code?: Prisma.StringFilter<"PaymentPromise"> | string
   payment_date?: Prisma.DateTimeNullableFilter<"PaymentPromise"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"PaymentPromise"> | Date | string
@@ -239,6 +247,7 @@ export type PaymentPromiseOrderByWithRelationInput = {
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  cedula?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
   payment_date?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -256,6 +265,7 @@ export type PaymentPromiseWhereUniqueInput = Prisma.AtLeast<{
   amount?: Prisma.StringFilter<"PaymentPromise"> | string
   bank?: Prisma.StringFilter<"PaymentPromise"> | string
   name?: Prisma.StringFilter<"PaymentPromise"> | string
+  cedula?: Prisma.StringFilter<"PaymentPromise"> | string
   transaction_code?: Prisma.StringFilter<"PaymentPromise"> | string
   payment_date?: Prisma.DateTimeNullableFilter<"PaymentPromise"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"PaymentPromise"> | Date | string
@@ -270,6 +280,7 @@ export type PaymentPromiseOrderByWithAggregationInput = {
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  cedula?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
   payment_date?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -290,6 +301,7 @@ export type PaymentPromiseScalarWhereWithAggregatesInput = {
   amount?: Prisma.StringWithAggregatesFilter<"PaymentPromise"> | string
   bank?: Prisma.StringWithAggregatesFilter<"PaymentPromise"> | string
   name?: Prisma.StringWithAggregatesFilter<"PaymentPromise"> | string
+  cedula?: Prisma.StringWithAggregatesFilter<"PaymentPromise"> | string
   transaction_code?: Prisma.StringWithAggregatesFilter<"PaymentPromise"> | string
   payment_date?: Prisma.DateTimeNullableWithAggregatesFilter<"PaymentPromise"> | Date | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"PaymentPromise"> | Date | string
@@ -304,6 +316,7 @@ export type PaymentPromiseCreateInput = {
   amount: string
   bank: string
   name: string
+  cedula?: string
   transaction_code: string
   payment_date?: Date | string | null
   created_at?: Date | string
@@ -318,6 +331,7 @@ export type PaymentPromiseUncheckedCreateInput = {
   amount: string
   bank: string
   name: string
+  cedula?: string
   transaction_code: string
   payment_date?: Date | string | null
   created_at?: Date | string
@@ -332,6 +346,7 @@ export type PaymentPromiseUpdateInput = {
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  cedula?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -346,6 +361,7 @@ export type PaymentPromiseUncheckedUpdateInput = {
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  cedula?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -360,6 +376,7 @@ export type PaymentPromiseCreateManyInput = {
   amount: string
   bank: string
   name: string
+  cedula?: string
   transaction_code: string
   payment_date?: Date | string | null
   created_at?: Date | string
@@ -374,6 +391,7 @@ export type PaymentPromiseUpdateManyMutationInput = {
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  cedula?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -388,6 +406,7 @@ export type PaymentPromiseUncheckedUpdateManyInput = {
   amount?: Prisma.StringFieldUpdateOperationsInput | string
   bank?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  cedula?: Prisma.StringFieldUpdateOperationsInput | string
   transaction_code?: Prisma.StringFieldUpdateOperationsInput | string
   payment_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -402,6 +421,7 @@ export type PaymentPromiseCountOrderByAggregateInput = {
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  cedula?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
   payment_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -416,6 +436,7 @@ export type PaymentPromiseMaxOrderByAggregateInput = {
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  cedula?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
   payment_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -430,6 +451,7 @@ export type PaymentPromiseMinOrderByAggregateInput = {
   amount?: Prisma.SortOrder
   bank?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  cedula?: Prisma.SortOrder
   transaction_code?: Prisma.SortOrder
   payment_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -446,6 +468,7 @@ export type PaymentPromiseSelect<ExtArgs extends runtime.Types.Extensions.Intern
   amount?: boolean
   bank?: boolean
   name?: boolean
+  cedula?: boolean
   transaction_code?: boolean
   payment_date?: boolean
   created_at?: boolean
@@ -460,6 +483,7 @@ export type PaymentPromiseSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   amount?: boolean
   bank?: boolean
   name?: boolean
+  cedula?: boolean
   transaction_code?: boolean
   payment_date?: boolean
   created_at?: boolean
@@ -474,6 +498,7 @@ export type PaymentPromiseSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   amount?: boolean
   bank?: boolean
   name?: boolean
+  cedula?: boolean
   transaction_code?: boolean
   payment_date?: boolean
   created_at?: boolean
@@ -488,6 +513,7 @@ export type PaymentPromiseSelectScalar = {
   amount?: boolean
   bank?: boolean
   name?: boolean
+  cedula?: boolean
   transaction_code?: boolean
   payment_date?: boolean
   created_at?: boolean
@@ -495,7 +521,7 @@ export type PaymentPromiseSelectScalar = {
   status?: boolean
 }
 
-export type PaymentPromiseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "valid_until" | "contract_id" | "amount" | "bank" | "name" | "transaction_code" | "payment_date" | "created_at" | "updated_at" | "status", ExtArgs["result"]["paymentPromise"]>
+export type PaymentPromiseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "valid_until" | "contract_id" | "amount" | "bank" | "name" | "cedula" | "transaction_code" | "payment_date" | "created_at" | "updated_at" | "status", ExtArgs["result"]["paymentPromise"]>
 
 export type $PaymentPromisePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PaymentPromise"
@@ -507,6 +533,7 @@ export type $PaymentPromisePayload<ExtArgs extends runtime.Types.Extensions.Inte
     amount: string
     bank: string
     name: string
+    cedula: string
     transaction_code: string
     payment_date: Date | null
     created_at: Date
@@ -941,6 +968,7 @@ export interface PaymentPromiseFieldRefs {
   readonly amount: Prisma.FieldRef<"PaymentPromise", 'String'>
   readonly bank: Prisma.FieldRef<"PaymentPromise", 'String'>
   readonly name: Prisma.FieldRef<"PaymentPromise", 'String'>
+  readonly cedula: Prisma.FieldRef<"PaymentPromise", 'String'>
   readonly transaction_code: Prisma.FieldRef<"PaymentPromise", 'String'>
   readonly payment_date: Prisma.FieldRef<"PaymentPromise", 'DateTime'>
   readonly created_at: Prisma.FieldRef<"PaymentPromise", 'DateTime'>
@@ -1122,6 +1150,11 @@ export type PaymentPromiseFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` PaymentPromises.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of PaymentPromises.
+   */
   distinct?: Prisma.PaymentPromiseScalarFieldEnum | Prisma.PaymentPromiseScalarFieldEnum[]
 }
 

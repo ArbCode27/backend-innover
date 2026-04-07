@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsUUID, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty } from 'class-validator';
 
 export class CreatePaymentPromiseDto {
   @ApiProperty({ description: 'id del contrato', example: '13123-d1212-dsfs1' })
-  @IsUUID()
+  @IsString()
   @IsNotEmpty()
   contract_id: string;
 
