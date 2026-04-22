@@ -56,7 +56,7 @@ export class PaymentsService {
       {
         headers: {
           'x-dolarvzla-key':
-            '2956d4364f4b4198bf8428de939c56870445e76acb7bfc448ffff4c0371e3c1e',
+            '3670ca51dc718eb427fa4ea2da6a38f2ce4eb466c84fb02d05407b1aeb76af7d',
         },
       },
     );
